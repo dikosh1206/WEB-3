@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <img src="img/logo.jpg" alt="Morning Crust Logo" width="45" height="45" class="me-2 rounded-circle">
+  
+  <title> Morning Crust — Home</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Morning Crust</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / CAROUSEL -->
+  <main class="container my-5">
+    <div id="heroCarousel" class="carousel slide rounded-3 overflow-hidden shadow-sm" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="6"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="7"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="8"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/carousel1.jpg" class="d-block w-100" alt="Fresh pastries and coffee">
+          <div class="carousel-caption d-none d-md-block text-start">
+            <h2 class="display-6">Warm mornings. Freshly baked.</h2>
+            <p>Handmade pastries & specialty coffee.</p>
+            <a class="btn btn-primary btn-lg" href="menu.html">Explore Menu</a>
+          </div>
+        </div>
+
+        <!-- Add remaining 8 items similarly -->
+        <div class="carousel-item">
+          <img src="img/carousel2.jpg" class="d-block w-100" alt="Croissant and cappuccino">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel3.jpg" class="d-block w-100" alt="Café interior wooden table">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel4.jpg" class="d-block w-100" alt="Baking pastries in the oven">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel5.jpg" class="d-block w-100" alt="Bread and coffee on table">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel6.jpg" class="d-block w-100" alt="Close-up of croissant">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel7.jpg" class="d-block w-100" alt="Coffee cup and beans">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel8.jpg" class="d-block w-100" alt="Patisserie display">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel9.jpg" class="d-block w-100" alt="Cafe table aesthetics">
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+    <!-- Two-column section (Task 3: col-lg-6) -->
+    <section class="row align-items-center mt-5">
+      <div class="col-lg-6 p-4">
+        <h2 class="display-5">Our Philosophy</h2>
+        <p class="lead">We bake every morning with local ingredients, slow fermentation and lots of care.</p>
+        <a href="about.html" class="btn btn-outline-secondary">Learn more</a>
+      </div>
+      <div class="col-lg-6 p-4">
+        <img src="img/card1.jpg" alt="Baker at work" class="img-fluid rounded shadow-sm">
+      </div>
+    </section>
+
+    <!-- Three-column section (Task 3: col-lg-4) -->
+    <section class="row text-center mt-5">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="p-4 rounded-3 shadow-sm h-100">
+          <h5>Freshly Baked</h5>
+          <p>Every morning — croissants, sourdough and more.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="p-4 rounded-3 shadow-sm h-100">
+          <h5>Specialty Coffee</h5>
+          <p>Single-origin beans roasted locally.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="p-4 rounded-3 shadow-sm h-100">
+          <h5>Cozy Space</h5>
+          <p>A place to read, work, and enjoy calm mornings.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (include team members) -->
+  <footer class="bg-dark text-light py-4">
+    <div class="container text-center small">
+      <div> Morning Crust — Bald Baldies </div>
+      <div>Team: Amanzhol Aldiyar, Kalzhanov Zhansultan</div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
