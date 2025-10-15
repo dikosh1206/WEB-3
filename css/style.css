@@ -6,7 +6,7 @@
     --card-shadow: 0 6px 18px rgba(62,47,42,0.08);
   }
   
-  /* Global */
+
   * { box-sizing: border-box; }
   body.bg-page {
     background: var(--bg);
@@ -18,20 +18,18 @@
   
   h1,h2,h3 { font-family: 'Playfair Display', serif; color: var(--dark); margin-bottom: .5rem; }
   
-  /* NAVBAR tweaks (Bootstrap used) */
+
   .navbar-brand { color: var(--muted) !important; font-weight:700; letter-spacing: .5px;}
   
-  /* Carousel caption */
+ 
   .carousel-caption { background: linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.1)); padding: 1rem; border-radius: .5rem; }
   .carousel-caption h2 { color: #fff; margin-bottom: .25rem; }
   .carousel-caption p { color: #fff; }
   
-  /* Card-like small boxes */
+
   .card { border: none; border-radius: 12px; box-shadow: var(--card-shadow); }
   
-  /* Task 2: cards WITHOUT Bootstrap
-     container: .card-container, items: .mq-card
-  */
+
   .card-container {
     max-width: 1200px;
     margin: 3rem auto;
@@ -52,43 +50,41 @@
   .mq-card h3 { margin: 1rem 0 .5rem 0; font-family: 'Playfair Display', serif; }
   .mq-card p { margin: 0 1rem 1rem 1rem; color: #555; }
   
-  /* Media queries for typography and Task 2 breakpoints */
-  
-  /* Mobile default */
+
   h1 { font-size: 1.6rem; }
   h2 { font-size: 1.3rem; }
   p, .lead { font-size: 0.95rem; }
   
-  /* Tablet */
+
   @media (min-width: 768px) {
     h1 { font-size: 2.4rem; }
     h2 { font-size: 1.6rem; }
     p, .lead { font-size: 1.05rem; }
   
-    /* cards (2 per row) */
+
     .card-container { flex-wrap: wrap; }
     .mq-card { flex: 1 1 45%; }
   }
   
-  /* Desktop */
+ 
   @media (min-width: 992px) {
     h1 { font-size: 3rem; }
     h2 { font-size: 2rem; }
     p, .lead { font-size: 1.15rem; }
   
-    /* cards 3 in row */
+
     .mq-card { flex: 1 1 30%; }
   }
   
-  /* Small extra styling */
+
   footer small { color: #6b5a50; }
   
 
   .carousel-item img {
     width: 100%;
-    height: 500px; /* можно уменьшить, например 400px */
-    object-fit: cover; /* чтобы изображение красиво обрезалось */
-    border-radius: 12px; /* закругленные края, по стилю Pinterest */
+    height: 500px; 
+    object-fit: cover; 
+    border-radius: 12px; 
   }
 
   
@@ -100,31 +96,31 @@
 
 
 
-/* Карточки меню — общий стиль */
+
 .menu-card {
     border: none;
     border-radius: 16px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #fffaf5; /* мягкий кремовый оттенок */
+    background-color: #fffaf5; 
   }
   
-  /* Эффект при наведении */
+  
   .menu-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
   
-  /* Изображения внутри карточек */
+ 
   .menu-card img {
     width: 100%;
-    height: 250px; /* одинаковая высота для всех фото */
-    object-fit: cover; /* чтобы изображение обрезалось красиво */
-    border-radius: 16px 16px 0 0; /* закругленные верхние углы */
+    height: 250px; 
+    object-fit: cover; 
+    border-radius: 16px 16px 0 0; 
   }
   
-  /* Текст карточек */
+
   .menu-card .card-body {
     background-color: #fffaf5;
     text-align: center;
@@ -134,7 +130,7 @@
   .menu-card .card-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #5a3e2b; /* цвет кофе */
+    color: #5a3e2b; 
   }
   
   .menu-card .card-text {
@@ -142,3 +138,80 @@
     font-size: 0.95rem;
   }
   
+
+/* about */
+.faq-section {
+  background-color: #fffaf5;
+}
+
+.accordion-button {
+  background-color: #f3e8dd;
+  color: #5a3e2b;
+  font-weight: 600;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #e7d7c3;
+  color: #3e2f2a;
+}
+
+.accordion-body {
+  color: #7a5c48;
+  background-color: #fff;
+}
+
+/*index ass 5*/
+
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none; 
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: #fffaf5;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  width: 350px;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: #5a3e2b;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #9C6B46;
+}
+
+
+/* menu ass 5 */
+#colorChangeBtn {
+  font-weight: 600;
+  color: #5a3e2b;
+  border-color: #9C6B46;
+  transition: all 0.3s ease;
+}
+
+#colorChangeBtn:hover {
+  background-color: #9C6B46;
+  color: #fffaf5;
+}
+
+
+/*time ass 5*/
+#dateTime {
+  color: #c9bda6;
+  font-style: italic;
+}

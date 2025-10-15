@@ -3,48 +3,53 @@
 **Team:** Bald Baldies  
 **Members:** Amanzhol Aldiyar, Kalzhanov Zhansultan
 
-Кратко: это адаптивный сайт кафе/пекарни, реализованный с использованием Bootstrap 5 и кастомных CSS media-queries. Дизайн — тёплая «кофейная» палитра в стиле Pinterest board, с каруселью, меню в виде карточек, формой контактов и отдельной страницей карточек, реализованной без Bootstrap (только CSS media queries), как требует задание.
+**Short Summary:**  
+A responsive café/bakery website built using Bootstrap 5 and custom CSS media queries.  
+The design follows a cozy, warm “coffee shop” aesthetic inspired by Pinterest.  
+It includes a carousel, menu page, responsive cards, contact form, and an About page.  
+One page (`cards.html`) is built **without Bootstrap**, using **pure CSS media queries**, as required.
 
 ---
 
-## Содержание README
+## Table of Contents
 
-- [Фичи](#фичи)  
-- [Соответствие заданию (Task 1–10)](#соответствие-заданию-task-1–10)  
-- [Структура проекта](#структура-проекта)  
-- [Как запустить локально](#как-запустить-локально)  
-- [Деплой (GitHub Pages)](#деплой-github-pages)  
-- [Изображения (какие файлы положить в `img/`)](#изображения)  
-- [Исправления/заметки перед сдачей](#исправлениязаметки-перед-сдачей)  
-- [Чек-лист для сдачи](#чек-лист-для-сдачи)  
-- [Контакты / Авторы](#контакты--авторы)
-
----
-
-## Фичи
-
-- Bootstrap 5: сетка, navbar (с логотипом), кнопки, карточки, carousel, формы.  
-- Кастомный CSS: палитра, шрифты (Playfair Display + Inter), тени, медиазапросы.  
-- Отдельная страница `cards.html` — карточки реализованы **без Bootstrap**, только CSS media queries (Task 2).  
-- Все страницы содержат футер с именами команды.  
-- Адаптивность: mobile / tablet / desktop — корректная верстка и типографика.
+- [Features](#features)  
+- [Task Requirements (1–10)](#task-requirements-1–10)  
+- [Project Structure](#project-structure)  
+- [How to Run Locally](#how-to-run-locally)  
+- [GitHub Pages Deployment](#github-pages-deployment)  
+- [Image Files (list)](#image-files-list)  
+- [Fixes Before Submission](#fixes-before-submission)  
+- [Final Checklist](#final-checklist)  
+- [Credits](#credits)
 
 ---
 
-## Соответствие заданию (Task 1–10)
+## Features
 
-- **Task 1 (Responsive Typography):** реализовано в `css/style.css` — медиазапросы для `h1, h2, p` (mobile/tablet/desktop).  
-- **Task 2 (Card group, no Bootstrap):** `cards.html` — три карточки с flex и media queries (3/2/1 layout).  
-- **Task 3 (Bootstrap Grid Layout):** `index.html`, `menu.html` — секции с `col-lg-6` и `col-lg-4`.  
-- **Task 4 (Bootstrap Spacing Utilities):** на страницах вместо многих кастомных отступов используются Bootstrap классы (`p-`, `m-`, `mt-`, `px-sm-2` и т.д.).  
-- **Task 5 (Bootstrap Navbar):** адаптивный `navbar` с `navbar-toggler`, логотип слева от названия.  
-- **Task 6 (Bootstrap Buttons):** `btn`, `btn-primary`, `btn-outline-*`, `btn-sm`, используются везде.  
-- **Task 7 (Bootstrap Carousel):** `index.html` — carousel с индикаторами, контролами и 9 слайдами (подставь свои изображения).  
-- **Task 8 (Bootstrap Cards):** `menu.html` — карточки `card` в гриде, унифицированные размеры и стиль.  
-- **Task 9 (Responsive Form):** `contact.html` — Bootstrap форма с `form-control`, `row`/`col-*`.  
-- **Task 10 (Accessibility):** семантические теги (`nav`, `main`, `section`, `footer`), `alt` для всех изображений, контраст текста/фона учтён.
+- **Bootstrap 5:** grid, navbar (with logo), carousel, cards, buttons, and responsive form.  
+- **Custom CSS:** palette, fonts (`Playfair Display` + `Inter`), shadows, and media queries.  
+- **Non-Bootstrap Page:** `cards.html` uses only CSS flexbox and media queries.  
+- **Fully responsive:** works on mobile, tablet, and desktop.  
+- **Consistent footer:** includes both team member names on every page.  
 
 ---
 
-## Структура проекта
+## Task Requirements (1–10)
 
+| Task | Requirement | Implementation |
+|------|--------------|----------------|
+| **1** | Responsive typography | Implemented with `h1`, `h2`, `p` in `css/style.css` |
+| **2** | Non-Bootstrap responsive cards | Done in `cards.html` using flexbox & media queries |
+| **3** | Bootstrap grid layout | Used in `index.html`, `menu.html` |
+| **4** | Bootstrap spacing utilities | `p-`, `m-`, `px-sm-2`, etc. used across pages |
+| **5** | Bootstrap navbar | Responsive navbar with logo on the left |
+| **6** | Bootstrap buttons | Consistent `btn`, `btn-outline-*`, and `btn-sm` usage |
+| **7** | Bootstrap carousel | Carousel on homepage with 9 images |
+| **8** | Bootstrap cards | `menu.html` cards layout |
+| **9** | Responsive form | `contact.html` with form controls |
+| **10** | Accessibility | Semantic tags, `alt` text, and contrast maintained |
+
+---
+
+**Members:** Amanzhol Aldiyar, Kalzhanov Zhansultan
