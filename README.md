@@ -1,60 +1,55 @@
+# ☕ Morning Crust — Assignment #5 (JavaScript Integration)
 
-<<<<<<< HEAD
-=======
-**Team:** Bald Baldies  
-**Members:** Amanzhol Aldiyar, Kalzhanov Zhansultan
-
-**Short Summary:**  
-A responsive café/bakery website built using Bootstrap 5 and custom CSS media queries.  
-The design follows a cozy, warm “coffee shop” aesthetic inspired by Pinterest.  
-It includes a carousel, menu page, responsive cards, contact form, and an About page.  
-One page (`cards.html`) is built **without Bootstrap**, using **pure CSS media queries**, as required.
+### Team: Bald Baldies  
+**Members:** Amanzhol Aldiyar, Kalzhanov Zhansultan  
+**Course:** Web Technologies  
+**Institution:** Astana IT University  
 
 ---
 
-## Table of Contents
+## 🌟 Overview
 
-- [Features](#features)  
-- [Task Requirements (1–10)](#task-requirements-1–10)  
-- [Project Structure](#project-structure)  
-- [How to Run Locally](#how-to-run-locally)  
-- [GitHub Pages Deployment](#github-pages-deployment)  
-- [Image Files (list)](#image-files-list)  
-- [Fixes Before Submission](#fixes-before-submission)  
-- [Final Checklist](#final-checklist)  
-- [Credits](#credits)
+**Morning Crust** is a warm and aesthetic café-themed website designed to represent a modern coffee shop.  
+This version (Assignment #5) enhances the previous HTML/CSS project by adding **interactive JavaScript features** —  
+including form validation, FAQ accordion, popup subscription form, dynamic background color changes,  
+and real-time date/time display.
+
+The goal was to make the website more **dynamic and user-friendly** while keeping the same visual style from Assignment #4.
 
 ---
 
-## Features
+## 🧩 Features Implemented (Assignment #5)
 
-- **Bootstrap 5:** grid, navbar (with logo), carousel, cards, buttons, and responsive form.  
-- **Custom CSS:** palette, fonts (`Playfair Display` + `Inter`), shadows, and media queries.  
-- **Non-Bootstrap Page:** `cards.html` uses only CSS flexbox and media queries.  
-- **Fully responsive:** works on mobile, tablet, and desktop.  
-- **Consistent footer:** includes both team member names on every page.  
+### **1. Form Validation**
+- Implemented in `contact.html`
+- Validates name, email, and message fields
+- Displays error messages for missing or invalid input
+- Prevents form submission until all fields are correct  
+*(Located in `js/script.js`)*
+
+### **2. Accordion (FAQ Section)**
+- Implemented in `about.html`
+- Displays common questions and answers about the café
+- Answers are hidden by default and revealed when clicked
+- Smooth opening/closing transition for better UX  
+
+### **3. Popup Subscription Form**
+- Added to `index.html`
+- Hidden by default and appears when the “Subscribe” button is clicked
+- Includes a close button and dark overlay background
+- Closes when the user clicks outside or on the close icon  
+
+### **4. Change Background Color**
+- Implemented in `menu.html`
+- Button dynamically cycles through warm, café-style background colors
+- Smooth transitions maintain design harmony  
+
+### **5. Display Current Date and Time**
+- Added to the footer of all pages
+- Uses JavaScript’s `Date` object to display the live date and time
+- Updates automatically every second  
 
 ---
 
-## Task Requirements (1–10)
+## 🧱 **File Structure**
 
-| Task | Requirement | Implementation |
-|------|--------------|----------------|
-| **1** | Responsive typography | Implemented with `h1`, `h2`, `p` in `css/style.css` |
-| **2** | Non-Bootstrap responsive cards | Done in `cards.html` using flexbox & media queries |
-| **3** | Bootstrap grid layout | Used in `index.html`, `menu.html` |
-| **4** | Bootstrap spacing utilities | `p-`, `m-`, `px-sm-2`, etc. used across pages |
-| **5** | Bootstrap navbar | Responsive navbar with logo on the left |
-| **6** | Bootstrap buttons | Consistent `btn`, `btn-outline-*`, and `btn-sm` usage |
-| **7** | Bootstrap carousel | Carousel on homepage with 9 images |
-| **8** | Bootstrap cards | `menu.html` cards layout |
-| **9** | Responsive form | `contact.html` with form controls |
-| **10** | Accessibility | Semantic tags, `alt` text, and contrast maintained |
-
----
-<<<<<<< HEAD
-=======
-
-**Members:** Amanzhol Aldiyar, Kalzhanov Zhansultan
->>>>>>> ec1b5fc (Added JavaScript interactivity: form validation, accordion, popup, background change, date/time)
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)

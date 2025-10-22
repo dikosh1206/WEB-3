@@ -1,97 +1,13 @@
-<<<<<<< HEAD
-//contact ass 5
-=======
-// contact page ass 5
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contactForm");
-  const messageBox = document.getElementById("formMessage");
 
-  if (form) {
-    form.addEventListener("submit", function (event) {
-<<<<<<< HEAD
-      event.preventDefault(); 
-=======
-      event.preventDefault();
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)
-
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      let errors = [];
-
-<<<<<<< HEAD
-    
-=======
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)
-      if (name.length < 2) {
-        errors.push("Name must be at least 2 characters long.");
-      }
-
-<<<<<<< HEAD
-    
-=======
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)
-      const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-      if (!emailRegex.test(email)) {
-        errors.push("Please enter a valid email address.");
-      }
-
-      if (message.length < 10) {
-        errors.push("Message must be at least 10 characters long.");
-      }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)
-      if (errors.length > 0) {
-        messageBox.innerHTML = errors.join("<br>");
-        messageBox.style.color = "red";
-      } else {
-        messageBox.style.color = "green";
-        messageBox.textContent = "Your message has been sent successfully!";
-        form.reset();
-      }
-    });
-  }
-});
-
-<<<<<<< HEAD
-
-// index ass5
-=======
-// global sounds 5 
 const clickSound = new Audio("sounds/click.mp3");
 
-// popup index ass 5
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)
+
 const popup = document.getElementById("popup");
 const openBtn = document.getElementById("subscribeBtn");
 const closeBtn = document.getElementById("closePopup");
 const submitBtn = document.getElementById("submitPopup");
 
 if (popup && openBtn && closeBtn && submitBtn) {
-<<<<<<< HEAD
-
-  openBtn.addEventListener("click", () => {
-    popup.style.display = "flex";
-  });
-
-
-  closeBtn.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-
-
-  popup.addEventListener("click", (e) => {
-    if (e.target === popup) popup.style.display = "none";
-  });
-
-
-  submitBtn.addEventListener("click", () => {
-=======
   openBtn.addEventListener("click", () => {
     clickSound.play();
     popup.style.display = "flex";
@@ -111,7 +27,6 @@ if (popup && openBtn && closeBtn && submitBtn) {
 
   submitBtn.addEventListener("click", () => {
     clickSound.play();
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)
     const emailInput = document.getElementById("popupEmail").value.trim();
     if (emailInput === "" || !emailInput.includes("@")) {
       alert("Please enter a valid email address ☕");
@@ -122,62 +37,68 @@ if (popup && openBtn && closeBtn && submitBtn) {
   });
 }
 
-<<<<<<< HEAD
 
-//menu ass5
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
+  const messageBox = document.getElementById("formMessage");
+
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      let errors = [];
+
+      if (name.length < 2) errors.push("Name must be at least 2 characters long.");
+      const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailRegex.test(email)) errors.push("Please enter a valid email address.");
+      if (message.length < 10) errors.push("Message must be at least 10 characters long.");
+
+      if (errors.length > 0) {
+        messageBox.innerHTML = errors.join("<br>");
+        messageBox.style.color = "red";
+      } else {
+        messageBox.style.color = "green";
+        messageBox.textContent = "Your message has been sent successfully!";
+        form.reset();
+      }
+    });
+  }
+});
+
 
 const colorBtn = document.getElementById("colorChangeBtn");
 const colors = ["#fffaf5", "#f3e8dd", "#f0dfd1", "#e8d3c2", "#d9bfa9", "#c9b396"];
-
 if (colorBtn) {
   let index = 0;
-
   colorBtn.addEventListener("click", () => {
+    clickSound.play();
     index = (index + 1) % colors.length;
     document.body.style.backgroundColor = colors[index];
     colorBtn.innerText = `Background: ${index + 1}`;
   });
 }
 
-//time ass 5
 
-function updateDateTime() {
-  const dateElement = document.getElementById("dateTime");
-  if (!dateElement) return;
-
-  const now = new Date();
-  const options = {
-=======
-// time display ass 5 
 function updateDateTime() {
   const dateElement = document.getElementById("dateTime");
   if (!dateElement) return;
   const now = new Date();
   const formatted = now.toLocaleString("en-US", {
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)
     year: "numeric",
     month: "long",
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
-<<<<<<< HEAD
-  };
-  const formatted = now.toLocaleString("en-US", options);
-
-  dateElement.textContent = `Current time: ${formatted}`;
-}
-
-
-setInterval(updateDateTime, 1000);
-updateDateTime();
-=======
+    second: "2-digit",
   });
   dateElement.textContent = `Current time: ${formatted}`;
 }
 setInterval(updateDateTime, 1000);
 updateDateTime();
 
-// read more index,about ass 6
 document.querySelectorAll(".read-more-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     clickSound.play();
@@ -191,6 +112,7 @@ document.querySelectorAll(".read-more-btn").forEach((btn) => {
     }
   });
 });
+
 
 const readMoreBtn = document.getElementById("readMoreBtn");
 const moreText = document.getElementById("moreText");
@@ -207,7 +129,7 @@ if (readMoreBtn && moreText) {
   });
 }
 
-// show time button ass 6
+
 const showTimeBtn = document.getElementById("showTimeBtn");
 const timeOutput = document.getElementById("timeOutput");
 if (showTimeBtn && timeOutput) {
@@ -220,7 +142,6 @@ if (showTimeBtn && timeOutput) {
   });
 }
 
-// rating star ass 6
 document.querySelectorAll(".star").forEach((star, index, allStars) => {
   star.addEventListener("click", () => {
     clickSound.currentTime = 0;
@@ -229,46 +150,34 @@ document.querySelectorAll(".star").forEach((star, index, allStars) => {
       s.style.color = i <= index ? "#FFD700" : "#ccc";
     });
     const ratingText = document.getElementById("ratingText");
-    if (ratingText) {
-      ratingText.textContent = `You rated us ${index + 1} stars!`;
-    }
+    if (ratingText) ratingText.textContent = `You rated us ${index + 1} stars!`;
   });
 });
 
-// color change button, index ass 6
-const colorChangeBtn = document.getElementById("colorChangeBtn");
-if (colorChangeBtn) {
-  colorChangeBtn.addEventListener("click", () => {
-    clickSound.currentTime = 0;
-    clickSound.play();
-    const colors = ["#fffaf5", "#f7e7ce", "#e8f0ff", "#e0ffe5", "#ffe4e1"];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    document.body.style.backgroundColor = randomColor;
-  });
-}
 
-// night mode ass 6
-const themeToggle = document.getElementById("themeToggle");
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    clickSound.currentTime = 0;
+document.querySelectorAll("#themeToggle").forEach((btn) => {
+  btn.addEventListener("click", () => {
     clickSound.play();
     document.body.classList.toggle("night-mode");
     if (document.body.classList.contains("night-mode")) {
       document.body.style.backgroundColor = "#061148";
       document.body.style.color = "#f5f5f5";
-      themeToggle.textContent = "☀️ Day Mode";
+      btn.textContent = "☀️ Day Mode";
+      btn.classList.replace("btn-outline-dark", "btn-outline-light");
     } else {
       document.body.style.backgroundColor = "#fffaf5";
-      document.body.style.color = "#5a3e2b";
-      themeToggle.textContent = "🌙 Night Mode";
+      document.body.style.color = "#212529";
+      btn.textContent = "🌙 Night Mode";
+      btn.classList.replace("btn-outline-light", "btn-outline-dark");
     }
   });
-}
+});
 
-// menu cards animation ass 6
+
 document.querySelectorAll(".menu-card").forEach((card) => {
   card.addEventListener("mouseenter", () => {
+    clickSound.currentTime = 0;
+    clickSound.play();
     card.style.transform = "scale(1.05)";
     card.style.transition = "transform 0.3s ease";
   });
@@ -276,12 +185,3 @@ document.querySelectorAll(".menu-card").forEach((card) => {
     card.style.transform = "scale(1)";
   });
 });
-
-// according sounds, about ass 6
-document.querySelectorAll(".accordion-button").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    clickSound.currentTime = 0;
-    clickSound.play();
-  });
-});
->>>>>>> 3fc3834 (Updated index.html and scripts for Assignment 6 improvements)
