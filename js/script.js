@@ -435,3 +435,10 @@ $(window).on("scroll", function() {
 $(".add-cart").on("click", function() {
   $("#toast").fadeIn(400).delay(1500).fadeOut(400);
 });
+
+$('#searchInput').on('keyup', function(){
+  let value = $(this).val().toLowerCase();
+  $('#productList li').filter(function(){
+    $(this).toggle($(this).text().toLowerCase().includes(value));
+  });
+});
