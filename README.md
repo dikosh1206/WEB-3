@@ -48,8 +48,3 @@ PickMe Bakery is a fully responsive web application showcasing a bakery's produc
 - **Audio API** for click sound effects
 
 ---
-
-## Installation & Usage
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/pickme-bakery.git
