@@ -1,50 +1,89 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Morning Crust — About</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — PickMe Bakery</title>
+  <link rel="icon" href="img/favicon.jpg" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
-<body class="bg-page">
+<body>
+  <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
-        <img src="img/logo.jpg" width="45" height="45" class="me-2">Morning Crust
+
+  <header class="site-header py-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="d-flex align-items-center brand">
+        <img src="img/favicon.jpg" alt="PickMe Bakery logo" class="logo">
+        <div class="ms-2"><h1 class="site-title m-0">PickMe Bakery</h1><small class="muted">Freshly baked — every day</small></div>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="cards.html">Cards</a></li>
-        </ul>
+      <nav class="main-nav d-flex align-items-center gap-2">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <button id="themeToggle" class="btn small theme-btn" aria-pressed="false">Night mode</button>
+      </nav>
+    </div>
+  </header>
+
+
+  <main class="container py-5">
+    <section class="about-hero text-center mb-5">
+      <h2 class="section-title">Our Story</h2>
+      <p class="lead">PickMe Bakery started as a small dream — to bring handcrafted, high-quality pastries and friendly service to our neighborhood.</p>
+    </section>
+
+    <section class="row align-items-center gy-4">
+      <div class="col-md-6">
+        <img src="img/about1.jpg" alt="Bakery interior" class="img-fluid rounded-3">
       </div>
-    </div>
-</nav>
+      <div class="col-md-6">
+        <h3>From the Oven to Your Home</h3>
+        <p>We combine traditional recipes with modern techniques, choosing the best ingredients: European butter, fermented doughs, and locally roasted coffee beans. Our bakers take pride in every batch—hand-shaping, slow-rising and carefully baking to perfection.</p>
+        <p>We emphasize sustainability and community: reducing waste, using recyclable packaging, and supporting local suppliers. Every cake and loaf has a story, and we love sharing that warmth across the table.</p>
+      </div>
+    </section>
 
-<main class="container my-5">
-<h1 class="text-center mb-5">About Morning Crust</h1>
-<div class="row align-items-center">
-    <div class="col-lg-6 mb-4">
-        <img src="img/card1.jpg" class="img-fluid rounded shadow-sm" alt="Baker at work">
-    </div>
-    <div class="col-lg-6">
-        <h2>Our Story</h2>
-        <p>Morning Crust is your cozy spot for fresh pastries and aromatic coffee. We believe in using the finest ingredients and baking every item with love. Whether you come for breakfast or a sweet treat — every bite feels like home.</p>
-        <p id="moreText" style="display:none;">Founded by Amanzhol Aldiyar and Kalzhanov Zhansultan, the café is inspired by European-style bakeries, offering warm vibes and an unforgettable aroma of morning coffee.</p>
-        <button id="readMoreBtn" class="btn btn-outline-primary mt-3">Read More</button>
-    </div>
-</div>
-</main>
+    <section class="mt-5">
+      <h3>Meet the Team</h3>
+      <div class="row gy-4">
+        <div class="col-md-4 text-center">
+          <img src="img/aldik_web.JPG" alt="Store Manager" class="team-img rounded-circle mb-2">
+          <h5>Amanzhol Aldiyar</h5>
+          <p class="small muted">Store Manager</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="img/Zhans_web.jpg" alt="Assistant Store Manager" class="team-img rounded-circle mb-2">
+          <h5>Kalzhanov Zhansultan</h5>
+          <p class="small muted">Assistant Store Manager</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="img/askar_web.jpeg" alt="Barista" class="team-img rounded-circle mb-2">
+          <h5> Askar </h5>
+          <p class="small muted">Bakers & Baristas</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
+<section class="text-center my-5">
+  <button id="showTimeBtn" class="btn btn-primary">Show Current Time</button>
+  <div id="currentTime" class="mt-3 fw-bold"></div>
+</section>
+
+  <footer class="site-footer">
+    <div class="container text-center py-4">
+      <p class="mb-1">© 2025 PickMe Bakery. All rights reserved.</p>
+      <p class="mb-0">Bald Baldies Team: Amanzhol Aldiyar, Kalzhanov Zhansultan</p>
+        <a href="https://www.instagram.com/aldik_nekuri/" class="social-link">Instagram</a>
+        <a href="https://www.tiktok.com/@aldik_nekuri" class="social-link">TikTok</a>
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

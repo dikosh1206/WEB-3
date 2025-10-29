@@ -1,123 +1,208 @@
 <!doctype html>
-<html lang="en">
+
+<html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Menu — Morning Crust</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Menu — PickMe Bakery</title>
+  <link rel="icon" href="img/favicon.jpg" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
-<body class="bg-page">
+<body>
+  <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Morning Crust</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain2">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMain2">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="menu.html">Menu</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="cards.html">Cards</a></li>
-        </ul>
-      </div>
+  <header class="site-header py-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="d-flex align-items-center brand">
+        <img src="img/favicon.jpg" alt="PickMe Bakery logo" class="logo" id="logo">
+        <div class="ms-2">
+          <h1 class="site-title m-0">PickMe Bakery</h1>
+          <small class="muted">Freshly baked — every day</small>
+        </div>
+      </a>
+      <nav class="main-nav d-flex align-items-center gap-2">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="menu.html" class="nav-link active">Menu</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <button id="themeToggle" class="btn small theme-btn" aria-pressed="false">Night mode</button>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <div class="container my-5">
-    <div class="row g-4">
+  <main class="container py-5">
+    <h2 class="section-title text-center">Full Menu</h2>
 
-      <!-- Продукт 1 -->
-      <div class="col-md-4">
-        <div class="card menu-card">
-          <img src="img/card3.jpg" class="card-img-top" alt="Coffee">
-          <div class="card-body">
-            <h5 class="card-title">Latte</h5>
-            <p class="card-text">
-              Rich espresso with steamed milk and foam.
-              <span class="more-text" style="display:none;"> Perfect for your morning routine!</span>
-            </p>
-            <button class="btn btn-sm btn-outline-primary read-more-btn">Read More</button>
-            <div class="rating mt-2">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="ms-2">Rating: <span class="rating-value">0</span></span>
-            </div>
-          </div>
-        </div>
+<div class="search-bar text-center mt-4">
+  <input type="text" id="searchInput" class="form-control w-50 mx-auto" placeholder="Search our menu...">
+  <div id="suggestions" class="suggestions-list mt-2"></div>
+</div>
+
+    <p class="text-center muted">Explore Cakes, Drinks and Bread</p>
+
+
+<div class="categories mt-4 mb-4 d-flex gap-2 justify-content-center flex-wrap">
+  <button class="cat-btn active" data-cat="all">All</button>
+  <button class="cat-btn" data-cat="cakes">Cakes</button>
+  <button class="cat-btn" data-cat="drinks">Drinks</button>
+  <button class="cat-btn" data-cat="bread">Bread</button>
+</div>
+
+<div class="row g-4 menu-grid">
+
+  <div class="col-md-4 menu-item" data-cat="bread">
+    <div class="menu-card p-3">
+      <img data-src="img/card1.jpg" alt="Croissant" class="menu-img lazy mb-3">
+
+      <h4>Butter Croissant</h4>
+      <p class="muted">700 ₸</p>
+      <p class="small">Classic French butter croissant — golden, flaky, and freshly baked each morning.</p>
+      <div class="d-flex gap-2">
+        <button class="btn add-cart">Add to Cart</button>
+        <button class="btn outline read-more"
+                data-title="Butter Croissant"
+                data-img="img/card1.jpg"
+                data-price="700"
+                data-desc="Classic French butter croissant — golden, flaky, and freshly baked each morning.">
+          Read more
+        </button>
       </div>
-
-      <!-- Продукт 2 -->
-      <div class="col-md-4">
-        <div class="card menu-card">
-          <img src="img/card2.jpg" class="card-img-top" alt="Croissant">
-          <div class="card-body">
-            <h5 class="card-title">Butter Croissant</h5>
-            <p class="card-text">
-              Freshly baked every morning with real butter.
-              <span class="more-text" style="display:none;"> Crispy outside, soft inside.</span>
-            </p>
-            <button class="btn btn-sm btn-outline-primary read-more-btn">Read More</button>
-            <div class="rating mt-2">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="ms-2">Rating: <span class="rating-value">0</span></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Продукт 3 -->
-      <div class="col-md-4">
-        <div class="card menu-card">
-          <img src="img/card1.jpg" class="card-img-top" alt="Dessert">
-          <div class="card-body">
-            <h5 class="card-title">Chocolate Ganache</h5>
-            <p class="card-text">
-              Smooth chocolate ganache with crisp crust.
-              <span class="more-text" style="display:none;"> A treat for chocolate lovers!</span>
-            </p>
-            <button class="btn btn-sm btn-outline-primary read-more-btn">Read More</button>
-            <div class="rating mt-2">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="ms-2">Rating: <span class="rating-value">0</span></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Добавь остальные продукты аналогично, меняя изображение, название и описание -->
-
     </div>
   </div>
 
-  <section class="text-center my-5">
-    <button id="colorChangeBtn" class="btn btn-outline-primary btn-lg">
-      Change Background Color
-    </button>
-  </section>
+  <div class="col-md-4 menu-item" data-cat="bread">
+    <div class="menu-card p-3">
+      <img data-src="img/card2.jpg" alt="Homemade Bread" class="menu-img lazy mb-3">
+      <h4>Homemade Bread</h4>
+      <p class="muted">900 ₸</p>
+      <p class="small">Soft and aromatic homemade loaf baked to perfection — ideal for sandwiches or toasts.</p>
+      <div class="d-flex gap-2">
+        <button class="btn add-cart">Add to Cart</button>
+        <button class="btn outline read-more"
+                data-title="Homemade Bread"
+                data-img="img/card2.jpg"
+                data-price="900"
+                data-desc="Soft and aromatic homemade loaf baked to perfection — ideal for sandwiches or toasts.">
+          Read more
+        </button>
+      </div>
+    </div>
+  </div>
 
-  <footer class="bg-dark text-light py-3 text-center small">
-    Bald Baldies Team: Amanzhol Aldiyar, Kalzhanov Zhansultan
-    <p id="dateTime" class="mt-2 small"></p>
+  <div class="col-md-4 menu-item" data-cat="drinks">
+    <div class="menu-card p-3">
+      <img data-src="img/card3.jpg" alt="Frappuccino with Popcorn" class="menu-img lazy mb-3">
+      <h4>Frappuccino Popcorn</h4>
+      <p class="muted">1 600 ₸</p>
+      <p class="small">Creamy cold frappuccino topped with sweet popcorn for a fun and unique taste.</p>
+      <div class="d-flex gap-2">
+        <button class="btn add-cart">Add to Cart</button>
+        <button class="btn outline read-more"
+                data-title="Frappuccino Popcorn"
+                data-img="img/card3.jpg"
+                data-price="1600"
+                data-desc="Creamy cold frappuccino topped with sweet popcorn for a fun and unique taste.">
+          Read more
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 menu-item" data-cat="drinks">
+    <div class="menu-card p-3">
+      <img data-src="img/card4.jpg" alt="Iced Cappuccino" class="menu-img lazy mb-3">
+      <h4>Iced Cappuccino</h4>
+      <p class="muted">1 300 ₸</p>
+      <p class="small">Refreshing blend of espresso, milk, and ice with creamy foam — cool and energizing.</p>
+      <div class="d-flex gap-2">
+        <button class="btn add-cart">Add to Cart</button>
+        <button class="btn outline read-more"
+                data-title="Iced Cappuccino"
+                data-img="img/card4.jpg"
+                data-price="1300"
+                data-desc="Refreshing blend of espresso, milk, and ice with creamy foam — cool and energizing.">
+          Read more
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-4 menu-item" data-cat="cakes">
+    <div class="menu-card p-3">
+      <img data-src="img/card6.jpg" alt="Chocolate Muffin" class="menu-img lazy mb-3">
+      <h4>Chocolate Muffin</h4>
+      <p class="muted">1 200 ₸</p>
+      <p class="small">Rich chocolate muffin with a soft center — baked fresh and perfectly sweet.</p>
+      <div class="d-flex gap-2">
+        <button class="btn add-cart">Add to Cart</button>
+        <button class="btn outline read-more"
+                data-title="Chocolate Muffin"
+                data-img="img/card6.jpg"
+                data-price="1200"
+                data-desc="Rich chocolate muffin with a soft center — baked fresh and perfectly sweet.">
+          Read more
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+  </main>
+<section class="text-center my-5">
+  <button id="showTimeBtn" class="btn btn-primary">Show Current Time</button>
+  <div id="currentTime" class="mt-3 fw-bold"></div>
+</section>
+
+  <footer class="site-footer">
+    <div id="toast" class="toast-msg">Item added to cart!</div>
+    <div class="container text-center py-4">
+      <p class="mb-1">© 2025 PickMe Bakery. All rights reserved.</p>
+      <p class="mb-0">Bald Baldies Team: Amanzhol Aldiyar, Kalzhanov Zhansultan</p>
+      <div class="social mt-2">
+        <a href="https://www.instagram.com/aldik_nekuri/" class="social-link">Instagram</a>
+        <a href="https://www.tiktok.com/@aldik_nekuri" class="social-link">TikTok</a>
+      </div>
+    </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/script.js"></script>
+  <div id="productModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-content">
+        <img id="modalImg" src="" alt="">
+        <h3 id="modalTitle"></h3>
+        <p id="modalPrice"></p>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    $(document).ready(function () {
+      $(".cat-btn").on("click", function () {
+        const category = $(this).data("cat");
+        $(".cat-btn").removeClass("active");
+        $(this).addClass("active");
+
+        if (category === "all") {
+          $(".menu-item").fadeIn(300);
+        } else {
+          $(".menu-item").hide();
+          $('.menu-item[data-cat="' + category + '"]').fadeIn(300);
+        }
+      });
+    });
+  </script>
+
+  <script src="js/script.js" defer></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
