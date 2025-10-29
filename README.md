@@ -1,55 +1,55 @@
-# ☕ Morning Crust — Assignment #5 (JavaScript Integration)
+# PickMe Bakery Website
 
-### Team: Bald Baldies  
-**Members:** Amanzhol Aldiyar, Kalzhanov Zhansultan  
-**Course:** Web Technologies  
-**Institution:** Astana IT University  
+## Overview
+PickMe Bakery is a fully responsive web application showcasing a bakery's products, including cakes, drinks, and bread. The site provides an interactive user experience with search, filtering, modals, ratings, and shopping cart features. Built with HTML, CSS, JavaScript, jQuery, and Bootstrap, it emphasizes usability, aesthetics, and modern web development practices.
 
 ---
 
-## 🌟 Overview
+## Features
 
-**Morning Crust** is a warm and aesthetic café-themed website designed to represent a modern coffee shop.  
-This version (Assignment #5) enhances the previous HTML/CSS project by adding **interactive JavaScript features** —  
-including form validation, FAQ accordion, popup subscription form, dynamic background color changes,  
-and real-time date/time display.
+### Navigation & Theme
+- Responsive header with navigation links.
+- Night mode toggle with theme persistence using `localStorage`.
 
-The goal was to make the website more **dynamic and user-friendly** while keeping the same visual style from Assignment #4.
+### Menu & Products
+- Full menu page with categories (Cakes, Drinks, Bread) and "All" filter.
+- Live search with suggestions and highlighted text matching.
+- Add to cart functionality with toast notifications.
+- Product modals showing detailed information (image, title, price, description).
+- Lazy loading images for better performance.
 
----
+### Interactive Components
+- Carousel for homepage hero section with autoplay and pause on hover.
+- Animated counters for statistics.
+- Rating system with stars (hover and click effects).
+- Copy email button functionality.
+- Current time display on button click with fade-in effect.
 
-## 🧩 Features Implemented (Assignment #5)
+### Contact Form
+- Form validation using HTML5 and JavaScript.
+- Submit button with spinner effect and success alert.
+- Responsive layout for all devices.
 
-### **1. Form Validation**
-- Implemented in `contact.html`
-- Validates name, email, and message fields
-- Displays error messages for missing or invalid input
-- Prevents form submission until all fields are correct  
-*(Located in `js/script.js`)*
-
-### **2. Accordion (FAQ Section)**
-- Implemented in `about.html`
-- Displays common questions and answers about the café
-- Answers are hidden by default and revealed when clicked
-- Smooth opening/closing transition for better UX  
-
-### **3. Popup Subscription Form**
-- Added to `index.html`
-- Hidden by default and appears when the “Subscribe” button is clicked
-- Includes a close button and dark overlay background
-- Closes when the user clicks outside or on the close icon  
-
-### **4. Change Background Color**
-- Implemented in `menu.html`
-- Button dynamically cycles through warm, café-style background colors
-- Smooth transitions maintain design harmony  
-
-### **5. Display Current Date and Time**
-- Added to the footer of all pages
-- Uses JavaScript’s `Date` object to display the live date and time
-- Updates automatically every second  
+### Additional Enhancements
+- Smooth scrolling for anchor links.
+- Sound effects on clicks for buttons and ratings.
+- Toast notifications for adding items to cart.
+- jQuery-based animations and interactions for better UX.
 
 ---
 
-## 🧱 **File Structure**
+## Technologies Used
+- **HTML5** for structure
+- **CSS3 / Bootstrap 5** for styling and responsiveness
+- **JavaScript** for dynamic functionality
+- **jQuery** for DOM manipulation and effects
+- **LocalStorage** for theme persistence
+- **IntersectionObserver API** for lazy loading and counter animation
+- **Audio API** for click sound effects
 
+---
+
+## Installation & Usage
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/pickme-bakery.git
