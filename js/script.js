@@ -1,13 +1,4 @@
-/* script.js — исправленная рабочая версия
-   - Сохранена структура safe(), но убраны дубли
-   - Исправлен рейтинг (звёзды)
-   - Поиск (desktop + mobile) + подсказки
-   - Lazy-loading (IntersectionObserver + fallback)
-   - Модалка Read more исправлена
-   - Toast / add-cart звук
-   - Contact форма с валидацией
-   - Счётчики, прогресс скролла, copy button и т.п.
-*/
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -15,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     try { fn(); } catch (e) { console.warn('safe() caught', e); }
   };
 
-  /* ---------------- Theme toggle ---------------- */
   safe(() => {
     const themeBtn = document.getElementById("themeToggle");
     const stored = localStorage.getItem("pickme-theme");
@@ -30,34 +20,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* ---------------- Simple carousel ---------------- */
   safe(() => {
-    const slides = Array.from(document.querySelectorAll(".carousel-slide"));
-    if (!slides.length) return;
-    let idx = slides.findIndex(s => s.classList.contains("active"));
-    if (idx < 0) idx = 0;
-    const show = i => {
-      slides.forEach((s, j) => {
-        s.style.display = j === i ? "block" : "none";
-        s.classList.toggle("active", j === i);
-      });
-    };
-    show(idx);
+const slides = Array.from(document.querySelectorAll(".carousel-slide"));
+if (!slides.length) return;
+let idx = slides.findIndex(s => s.classList.contains("active"));
+if (idx < 0) idx = 0;
 
-    const prevBtn = document.querySelector(".carousel-control.prev");
-    const nextBtn = document.querySelector(".carousel-control.next");
-    if (prevBtn) prevBtn.addEventListener("click", () => { idx = (idx - 1 + slides.length) % slides.length; show(idx); });
-    if (nextBtn) nextBtn.addEventListener("click", () => { idx = (idx + 1) % slides.length; show(idx); });
+// добавляем плавный переход через opacity
+slides.forEach(s => {
+  s.style.position = "absolute";
+  s.style.top = 0;
+  s.style.left = 0;
+  s.style.width = "100%";
+  s.style.transition = "opacity 0.6s ease-in-out";
+  s.style.opacity = 0;
+  s.style.zIndex = 0;
+});
+slides[idx].style.opacity = 1;
+slides[idx].style.zIndex = 1;
 
-    let auto = setInterval(() => { idx = (idx + 1) % slides.length; show(idx); }, 5000);
-    const hero = document.querySelector(".hero-carousel");
-    if (hero) {
-      hero.addEventListener("mouseenter", () => clearInterval(auto));
-      hero.addEventListener("mouseleave", () => { auto = setInterval(() => { idx = (idx + 1) % slides.length; show(idx); }, 5000); });
-    }
+const show = i => {
+  slides.forEach((s, j) => {
+    s.style.opacity = j === i ? 1 : 0;
+    s.style.zIndex = j === i ? 1 : 0;
+    s.classList.toggle("active", j === i);
+  });
+};
+show(idx);
+
+const prevBtn = document.querySelector(".carousel-control.prev");
+const nextBtn = document.querySelector(".carousel-control.next");
+if (prevBtn) prevBtn.addEventListener("click", () => { idx = (idx - 1 + slides.length) % slides.length; show(idx); });
+if (nextBtn) nextBtn.addEventListener("click", () => { idx = (idx + 1) % slides.length; show(idx); });
+
+let auto = setInterval(() => { idx = (idx + 1) % slides.length; show(idx); }, 5000);
+const hero = document.querySelector(".hero-carousel");
+if (hero) {
+  hero.addEventListener("mouseenter", () => clearInterval(auto));
+  hero.addEventListener("mouseleave", () => { auto = setInterval(() => { idx = (idx + 1) % slides.length; show(idx); }, 5000); });
+}
   });
 
-  /* ---------------- Modal (Read more) ---------------- */
   safe(() => {
     const modal = document.getElementById("productModal");
     if (!modal) return;
@@ -69,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".read-more").forEach(btn => {
       btn.addEventListener("click", (e) => {
-        // fill modal fields safely
         if (modalImg && btn.dataset.img) modalImg.src = btn.dataset.img;
         if (modalTitle && btn.dataset.title) modalTitle.textContent = btn.dataset.title;
         if (modalPrice) modalPrice.textContent = (btn.dataset.price ? btn.dataset.price + " ₸" : "");
@@ -92,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------------- Toast / Add to cart sound ---------------- */
   safe(() => {
     const clickSound = document.getElementById("clickSound");
     let toast = document.getElementById("pm-toast");
@@ -136,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------------- Search (vanilla) + suggestions ---------------- */
   safe(() => {
     const input = document.getElementById("searchInput");
     const suggestionsBox = document.getElementById("suggestions");
@@ -146,19 +146,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const names = cards.map(c => (c.dataset.name || c.querySelector("h3, h4")?.textContent || "").trim()).filter(Boolean);
 
-    // debounce helper
     let searchTimeout = null;
     input.addEventListener("input", function () {
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(() => {
         const q = this.value.trim().toLowerCase();
-        // filter cards
         cards.forEach(c => {
           const name = (c.dataset.name || c.querySelector("h3, h4")?.textContent || "").toLowerCase();
           c.style.display = (name.includes(q) || q === "") ? "" : "none";
         });
 
-        // suggestions
         if (suggestionsBox) {
           suggestionsBox.innerHTML = "";
           if (q.length >= 1) {
@@ -189,7 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 180);
     });
 
-    // hide suggestions on outside click
     document.addEventListener("click", (e) => {
       if (suggestionsBox && !suggestionsBox.contains(e.target) && e.target !== input) {
         suggestionsBox.style.display = "none";
@@ -198,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------------- Counters (intersection) ---------------- */
   safe(() => {
     const counters = document.querySelectorAll(".counter[data-target]");
     counters.forEach(counter => {
@@ -227,7 +222,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------------- Lazy loading (IntersectionObserver + fallback) ---------------- */
   safe(() => {
     const lazyImgs = Array.from(document.querySelectorAll("img.lazy"));
     if (!lazyImgs.length) return;
@@ -253,7 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       lazyImgs.forEach(img => lz.observe(img));
     } else {
-      // fallback: load when in viewport (simple)
       const onScrollLoad = () => {
         lazyImgs.forEach(img => {
           if (img.classList.contains('lazy')) {
@@ -268,12 +261,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* ---------------- Smooth anchor scrolling ---------------- */
   safe(() => {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", (e) => {
         const href = a.getAttribute('href');
-        if (href === "#" || href === "#!") return; // ignore placeholders
+        if (href === "#" || href === "#!") return; 
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
@@ -283,7 +275,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------------- Contact form (validation + UX) ---------------- */
   safe(() => {
     const form = document.getElementById("contactForm");
     if (!form) return;
@@ -293,7 +284,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!form.checkValidity()) {
         form.classList.add("was-validated");
-        // focus first invalid
         const firstInvalid = form.querySelector(':invalid');
         if (firstInvalid) firstInvalid.focus();
         return;
@@ -304,7 +294,6 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.textContent = "Sending...";
       }
 
-      // fake sending
       setTimeout(() => {
         if (submitBtn) {
           submitBtn.disabled = false;
@@ -316,7 +305,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------------- Scroll progress bar ---------------- */
   safe(() => {
     const progress = document.getElementById("scrollProgress");
     if (!progress) return;
@@ -328,7 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------------- Utility: copy button & toast ---------------- */
   safe(() => {
     const copyBtn = document.getElementById("copyBtn");
     if (copyBtn) {
@@ -344,7 +331,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* ---------------- Small accessibility: close suggestions with ESC ---------------- */
   safe(() => {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -358,50 +344,46 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-  /* ---------------- Show current time + click sound ---------------- */
-  safe(() => {
-    const btn = document.getElementById("showTimeBtn");
-    const display = document.getElementById("currentTime");
-    const clickSound = document.getElementById("clickSound");
+safe(() => {
+  const display = document.getElementById("currentTime");
+  const clickSound = document.getElementById("clickSound");
 
-    if (!btn || !display) return;
+  if (!display) return;
 
-    btn.addEventListener("click", () => {
-      // play click sound (safe)
-      if (clickSound) {
-        try { clickSound.currentTime = 0; clickSound.play(); } catch (e) { /* ignore autoplay errors */ }
-      }
+  const updateGreeting = () => {
+    const now = new Date();
+    const hh = now.getHours();
+    const mm = now.getMinutes().toString().padStart(2, "0");
+    const ss = now.getSeconds().toString().padStart(2, "0");
 
-      // format current time HH:MM:SS
-      const now = new Date();
-      const hh = now.getHours().toString().padStart(2, "0");
-      const mm = now.getMinutes().toString().padStart(2, "0");
-      const ss = now.getSeconds().toString().padStart(2, "0");
-      const timeString = `${hh}:${mm}:${ss}`;
+    let greeting = "Hello";
+    if (hh < 12) greeting = "Good morning";
+    else if (hh < 18) greeting = "Good afternoon";
+    else greeting = "Good evening";
 
-      // update display and simple fade-in
-      display.textContent = "Current time: " + timeString;
-      // ensure we can animate opacity
-      display.style.transition = "opacity 0.35s ease";
-      display.style.opacity = "0";
-      // force a frame then show
-      requestAnimationFrame(() => {
-        display.style.opacity = "1";
-      });
+    display.textContent = `${greeting}! Current time: ${hh}:${mm}:${ss}`;
+    display.style.transition = "opacity 0.35s ease";
+    display.style.opacity = "0";
+    requestAnimationFrame(() => {
+      display.style.opacity = "1";
     });
+  };
+
+  updateGreeting();
+
+  setInterval(updateGreeting, 60000);
+
+  if (clickSound) {
+    try { clickSound.currentTime = 0; clickSound.play(); } catch(e) {}
+  }
+});
+
   });
 
-}); // end DOMContentLoaded
-
-/* ---------------- jQuery section (consolidated) ----------------
-   - keep here things that rely on jQuery; no duplicate handlers
-*/
 if (window.jQuery) (function ($) {
   $(function () {
-    // console ready
     try { console.log("jQuery ready — script loaded"); } catch (e) {}
 
-    // menu autocomplete sample (if you want static suggestions)
     const menuItems = ["Croissant", "Sourdough Bread", "Frapuccino Popcorn", "Ice Cappuccino", "Americano", "Chocolate Muffin"];
     $("#searchInput").on("keyup", function () {
       const value = $(this).val().toLowerCase();
@@ -420,7 +402,6 @@ if (window.jQuery) (function ($) {
       $("#suggestions").empty().hide();
     });
 
-    // highlight matches in .menu-card h4
     $("#searchInput").on("keyup", function () {
       const value = $(this).val().toLowerCase();
       $(".menu-card h4").each(function () {
@@ -434,7 +415,6 @@ if (window.jQuery) (function ($) {
       });
     });
 
-    // scroll progress (fallback/extra)
     $(window).on("scroll", function () {
       const $lazy = $(".lazy");
       if ($lazy.length) {
@@ -447,7 +427,6 @@ if (window.jQuery) (function ($) {
       }
     });
 
-    // Consolidated rating handler (jQuery) - ONE trusted implementation
     $(document).on('click', '.rating .star', function () {
       const $star = $(this);
       const value = parseInt($star.data('value') || 0, 10);
@@ -458,7 +437,6 @@ if (window.jQuery) (function ($) {
         try { clickSound.currentTime = 0; clickSound.play(); } catch (e) {}
       }
 
-      // remove and re-add
       $container.find('.star').removeClass('active');
       $container.find('.star').each(function (i) {
         if (i < value) $(this).addClass('active');
@@ -466,7 +444,6 @@ if (window.jQuery) (function ($) {
       $container.attr('data-selected', value);
     });
 
-    // hover behavior
     $(document).on('mouseenter', '.rating .star', function () {
       const val = parseInt($(this).data('value') || 0, 10);
       const $container = $(this).closest('.rating');
@@ -478,7 +455,6 @@ if (window.jQuery) (function ($) {
       $(this).find('.star').removeClass('hovered');
     });
 
-    // counters (jQuery animate) — if you prefer this fallback
     $(".counter").each(function () {
       const $el = $(this);
       const count = +$el.data("count") || +$el.data("target") || 0;
@@ -491,9 +467,7 @@ if (window.jQuery) (function ($) {
       });
     });
 
-    // submit btn spinner (if exists outside contact form)
     $("#submitBtn").on("click", function (e) {
-      // if it's inside a form, the form handler already handles submission
       e.preventDefault();
       const $btn = $(this);
       $btn.prop("disabled", true).html('<span class="spinner-border spinner-border-sm"></span> Please wait...');
@@ -503,7 +477,6 @@ if (window.jQuery) (function ($) {
       }, 2000);
     });
 
-    // copy button
     $("#copyBtn").on("click", function () {
       const text = $("#copyText").text();
       if (!navigator.clipboard) return alert("Copy not supported");
@@ -513,13 +486,12 @@ if (window.jQuery) (function ($) {
       });
     });
 
-    // add-cart toast (jQuery UI)
     $(".add-cart").on("click", function () {
       $("#toast").fadeIn(400).delay(1500).fadeOut(400);
     });
 
-  }); // end jQuery ready
-})(jQuery); // end if jQuery
+  }); 
+})(jQuery); 
 
 
 safe(() => {
@@ -539,3 +511,23 @@ safe(() => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const ham = document.getElementById("hamburger");
+  const nav = document.querySelector(".main-nav");
+
+  ham.addEventListener("click", () => {
+    nav.classList.toggle("show");
+    ham.classList.toggle("active");
+  });
+
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("show");
+      ham.classList.remove("active");
+    });
+  });
+});
+
+
+
